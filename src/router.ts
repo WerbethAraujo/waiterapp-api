@@ -9,6 +9,10 @@ import { listCategories } from "./app/useCases/categories/listCategories";
 import { createProduct } from "./app/useCases/product/createProduct";
 import { listProducts } from "./app/useCases/product/listProducts";
 import { listProductsByCategory } from "./app/useCases/categories/listProductByCategory";
+import { listOrders } from "./app/useCases/orders/listOrders";
+import { createOrder } from "./app/useCases/orders/createOrder";
+import { changeOrderStatus } from "./app/useCases/orders/changeOrderStatus";
+import { deleteOrder } from "./app/useCases/orders/deleteOrder";
 
 export const routes = Router();
 
@@ -39,21 +43,13 @@ routes.post("/products", upload.single("image"), createProduct);
 routes.get("/categories/:categoryId/products", listProductsByCategory);
 
 //List orders
-routes.get("/orders", (req, res) => {
-  res.send("Ok");
-});
+routes.get("/orders", listOrders);
 
 //Create orders
-routes.post("/orders", (req, res) => {
-  res.send("Ok");
-});
+routes.post("/orders", createOrder);
 
 //Change order status
-routes.patch("/orders/:orderId", (req, res) => {
-  res.send("Ok");
-});
+routes.patch("/orders/:orderId", changeOrderStatus);
 
 //Delete / cancel order
-routes.delete("/orders/:orderId", (req, res) => {
-  res.send("Ok");
-});
+routes.delete("/orders/:orderId", deleteOrder);
